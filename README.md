@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Desafío Bloom Reuse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Estructura del Proyecto:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+/src
+  /assets
+    index.css
+  /components
+    SearchBar.tsx
+    PokemonList.tsx
+    PokemonCard.tsx
+  /hooks
+    usePokemonSearch.ts
+    usePokemonSuggestions.ts
+  /services
+    api.ts
+  App.tsx
+  index.tsx
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Explicación de los Archivos:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+* App.tsx: Componente principal de la aplicación. Contiene el estado global para almacenar los Pokémon encontrados y maneja la lógica de búsqueda.
+* SearchBar.tsx: Componente que contiene la barra de búsqueda, y se encarga de mostrar las sugerencias basadas en lo que el usuario escribe.
+* PokemonList.tsx: Componente que muestra la lista de Pokémon encontrados.
+* PokemonCard.tsx: Componente que muestra la información del Pokémon.
+* usePokemonSearch.ts: Hook personalizado para manejar la lógica de búsqueda de Pokémon y actualizar el estado con los resultados.
+* usePokemonSuggestions.ts: Hook personalizado que maneja las sugerencias para el autocompletado de búsqueda.
+* api.ts: Contiene las funciones para interactuar con la API de Pokémon.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Comandos de Instalación y Ejecución del Proyecto:
+
+```bash
+npm install
+```
+```bash
+npm run dev
 ```
